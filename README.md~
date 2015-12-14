@@ -52,7 +52,7 @@ $ npm run build
 
 The index.js can be modified to use any of the existing themes provided by [Bootswatch](https://github.com/thomaspark/bootswatch/).
 Change line 01 from `import './css/vanilla/bootstrap.css';` to `import './css/<bootswatchthemename>/bootstrap.css';` to do this.
-Save and preview the page immediately with the live reload feature.
+
 
 ## Thanks
 
