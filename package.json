@@ -1,7 +1,7 @@
 {
-  "name": "riot-startkit",
+  "name": "riot-bootstrap-startkit",
   "version": "1.0.0",
-  "description": "A Riot - PostCSS - Webpack startkit from wbkd.io",
+  "description": "A Riot - PostCSS - Webpack startkit with bootstrap defaults",
   "main": "webpack.config.js",
   "scripts": {
     "html": "cpy ./src/index.html ./build/",
@@ -10,7 +10,7 @@
     "serve": "webpack-dev-server --hot",
     "dev": "npm-run-all html serve"
   },
-  "author": "webkid.io",
+  "author": "github.com/calben",
   "license": "MIT",
   "dependencies": {
     "file-loader": "^0.8.5",
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wbkd/riotjs-startkit.git"
+    "url": "https://github.com/calben/riotjs-bootstrap-startkit"
   },
   "devDependencies": {
     "autoprefixer-core": "^6.0.1",
