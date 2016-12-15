@@ -1,7 +1,9 @@
+import route from 'riot-route'
 import './pages/home.tag'
 import './pages/projects.tag'
 
-// we need this to easily check the current route from every component 
+// we need this to easily check the current route from every component
+riot.route = route
 riot.routeState = {
   view : ''
 };

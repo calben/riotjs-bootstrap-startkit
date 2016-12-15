@@ -32,7 +32,7 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'riotjs-loader',
       query: {
-        type: 'es6'
+        type: 'babel'
       }
     }],
     loaders: [{
@@ -42,9 +42,9 @@ module.exports = {
       test: /\.js|\.tag$/,
       exclude: /node_modules/,
       include: /src/,
-      loader: 'babel-loader',
+      loader: 'babel',
       query: {
-        modules: 'common'
+        presets: ['es2015']
       }
     }, {
       test: /\.css$/,
