@@ -41,6 +41,7 @@ Now the server is runnning on localhost:1338
 NOTE THIS IS NOT 1337.
 You may run both the original startkit and this edition for comparison at the same time.
 
+![preview image](https://github.com/calben/riotjs-bootstrap-startkit/blob/master/img/preview.png?raw=true)
 
 ## Build
 
