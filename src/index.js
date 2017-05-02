@@ -18,7 +18,7 @@ riot.mount('app');
 import Router 		from './router.js';
 riot.router = new Router();
 
-riot.control.trigger('final-mount');
+riot.control.trigger(riot.EVT.finalMount);
 
 
 
