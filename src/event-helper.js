@@ -1,7 +1,3 @@
-import Riotcontrol from 'riotcontrol';
-
-riot.control = Riotcontrol;
-
 // event names
 
 riot.EVT = {
