@@ -2,10 +2,20 @@
   <div class="row">
     <div class="col-md-6">
       <h3>{ opts.title }</h3>
+
       <ul>
         <li each={ items } >{ this.name }</li>
       </ul>
     </div>
+
+    <div class="col-md-6">
+      <h3>{ opts.title }</h3>
+
+      <ul>
+        <li each={ items } >{ this.name }</li>
+      </ul>
+    </div>
+    
   </div>
 
   <script>
