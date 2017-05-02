@@ -1,10 +1,11 @@
 import './css/vanilla/bootstrap.css';
+import './css/index.css'
 import './js/bootstrap.js'
 import './event-helper';
 
 // Put RiotControl first in the startup flow
-import Riotcontrol from 'riotcontrol';
-riot.control = Riotcontrol;
+import RiotControl from 'riotcontrol';
+riot.control = RiotControl;
 
 // Add the stores
 
