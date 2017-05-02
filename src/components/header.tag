@@ -13,22 +13,24 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-	    <li each={ navItems } onclick={parent.route} class={ active : parent.currentView === this.view }><a>{ this.title }</a></li>
+	    <li each={ navItems } 
+          onclick={parent.route} 
+          class={ active : parent.routeState.view === this.view }><a>{ this.title }</a></li>
 	  </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container-fluid -->
 </nav>
 
 <script>
+  var self = this;
+  self.routeState = riot.routeState
 
-  this.currentView = riot.routeState.view;
-
-  this.navItems = [
+  self.navItems = [
     { title : 'Home', view : 'home'},
     { title : 'Projects', view : 'projects' }
   ];
 
-  this.route = (evt) => {
+  self.route = (evt) => {
     riot.route(evt.item.view)
   };
 

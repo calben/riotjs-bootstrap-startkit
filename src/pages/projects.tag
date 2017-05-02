@@ -1,8 +1,6 @@
-import '../components/header.tag';
 import '../components/itemlist.tag';
 
 <projects>
-  <header></header>
   <div class="container">
     <h2>Projects</h2>
     <p>
