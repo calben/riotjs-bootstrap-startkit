@@ -23,12 +23,26 @@
 
 <script>
   var self = this;
-  self.routeState = riot.routeState
+  self.routeState = riot.routeState;
 
   self.navItems = [
     { title : 'Home', view : 'home'},
     { title : 'Projects', view : 'projects' }
   ];
+
+  self.on('mount', () => {
+    console.log('header mount');
+    riot.control.on('header-update',self.onHeaderUpdate);
+  });
+  self.on('unmount', () => {
+    console.log('header unmount')
+    riot.control.off('header-update',self.onHeaderUpdate);
+  });
+
+  self.onHeaderUpdate = () =>{
+    console.log('header header-update')
+    self.update()
+  }
 
   self.route = (evt) => {
     riot.route(evt.item.view)

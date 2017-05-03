@@ -20,9 +20,8 @@ import './components/header.tag';
       riot.control.off(riot.EVT.finalMount,self.onFinalMount);
     });
 
-    self.onFinalMount = () =>{
-      console.log('app '+riot.EVT.finalMount)
-      self.update()
+    self.onFinalMount = (data) =>{
+      console.log('app '+ riot.EVT.finalMount + ' ' + data)
     }
 
 </script>

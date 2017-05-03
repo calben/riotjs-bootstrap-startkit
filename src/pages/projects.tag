@@ -1,5 +1,3 @@
-import '../components/itemlist.tag';
-
 <projects>
   <div class="container">
     <h2>Projects</h2>
