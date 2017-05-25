@@ -1,6 +1,4 @@
-import './css/vanilla/bootstrap.css';
-import './js/bootstrap.js'
-
+import "./css/index.css";
 import './event-helper';
 
 // Put RiotControl first in the startup flow
