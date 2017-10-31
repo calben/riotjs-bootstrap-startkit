@@ -2,59 +2,96 @@ var webpack = require('webpack');
 
 var cssimport = require('postcss-import');
 var customProperties = require('postcss-custom-properties');
-var autoprefixer = require('autoprefixer-core');
+var autoprefixer = require('autoprefixer');
 var csswring = require('csswring');
 var cssnested = require('postcss-nested');
 
 module.exports = {
-  entry: {
-    app: ['./src/index.js']
-  },
+  entry: './src/index.js',
   output: {
     path: __dirname + '/build/',
     filename: 'bundle.js'
   },
-  devtool: 'eval',
-  debug: true,
+  devtool: 'inline-source-map',
   plugins: [
     new webpack.ProvidePlugin({
       riot: 'riot'
-    }),
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery"
     })
   ],
   module: {
-    preLoaders: [{
-      test: /\.tag$/,
-      exclude: /node_modules/,
-      loader: 'riotjs-loader',
-      query: {
-        type: 'babel'
+    rules:[
+      {
+        test: /\.tag$/,
+        enforce: "pre",
+        use:[
+          {loader: 'riotjs-loader',options: {type: 'babel'}}
+        ]
+      },
+      {
+        test: /bootstrap\/js\//,
+        loader: 'imports?jQuery=jquery'
+      },
+      {
+        // For all .css files except from node_modules
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { modules: true } },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: (loader) => [
+                cssimport, 
+                cssnested, 
+                customProperties, 
+                autoprefixer, 
+                csswring
+              ]
+            }
+          }
+        ]
+      },
+      {
+        // For all .css files in node_modules
+        test: /\.css$/,
+        include: /node_modules/,
+        use: [
+          'style-loader', 'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: (loader) => [
+                cssimport, 
+                cssnested, 
+                customProperties, 
+                autoprefixer, 
+                csswring
+              ]
+            }
+          }
+        ],
+
+      },
+      
+      {
+        test: /\.js|\.tag$/,
+        use: [ 
+          { 
+            loader: 'babel-loader', 
+            options: { 
+              presets: ['es2015'] 
+            } 
+          } 
+        ],
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: 'url-loader?limit=100000'
       }
-    }],
-    loaders: [{
-      test: /bootstrap\/js\//,
-      loader: 'imports?jQuery=jquery'
-    }, {
-      test: /\.js|\.tag$/,
-      exclude: /node_modules/,
-      include: /src/,
-      loader: 'babel',
-      query: {
-        presets: ['es2015']
-      }
-    }, {
-      test: /\.css$/,
-      loader: 'style-loader!css-loader!postcss-loader'
-    }, {
-      test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-      loader: 'url-loader?limit=100000'
-    }]
+    ],
   },
-  postcss: [cssimport, cssnested, customProperties, autoprefixer, csswring],
   devServer: {
     contentBase: './build/',
     port: 1338,
@@ -62,3 +99,7 @@ module.exports = {
     inline: true
   }
 };
+/*
+ postcss: [cssimport, cssnested, customProperties, autoprefixer, 
+  csswring],
+  */

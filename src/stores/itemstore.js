@@ -20,9 +20,4 @@ class ItemStore{
   }
 
 }
-
-// add store to riot control
-let itemStore = new ItemStore();
-riot.control.addStore(itemStore);
-
-export default itemStore;
+export default ItemStore;
